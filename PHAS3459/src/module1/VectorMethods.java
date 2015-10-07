@@ -13,7 +13,7 @@ public class VectorMethods {
 	public double dotprod(double ax, double ay, double az, double bx, double by, double bz) {
 		double x;
 		x = ax*bx + ay*by + az*bz;
-		System.out.println("Vector A is " + "(" + ax +","  + ay +"," + az +") " + "and Vector B is "+ "(" + bx +","  + by +"," + bz +")");
+		System.out.println("Vector A is " + "(" + ax +","+ ay +"," + az +") " + "and Vector B is "+ "(" + bx +","+ by +"," + bz +")");
 		System.out.println("The dot product between the two vectors is " + x);
 		return x;
 			
@@ -28,7 +28,7 @@ public class VectorMethods {
 	
 	public double angle(double ax, double ay, double az, double bx, double by, double bz) {
 		double z;
-		z = Math.acos(dotprod(ax, ay, az, bx, by, bz)/(magnitude(ax, ay, az)*magnitude(bx, by, bz)));
+		z = (Math.acos(dotprod(ax, ay, az, bx, by, bz)/(magnitude(ax, ay, az)*magnitude(bx, by, bz)))) * 180/Math.PI;
 		System.out.println(z);
 		return z;
 
