@@ -16,7 +16,6 @@ public class VectorMethods {
 		double e = 5.0;
 		double f = 6.0;
 		
-		double mag = vm.magnitude(a,b,c);
 
 	}
 
