@@ -2,35 +2,38 @@ package module1;
 public class AlgorithimControl {
 
 	public static void main(String[] args) {
-		int x = 1;
-		int xmax = 17;
+		AlgorithimControl ac = new AlgorithimControl();
+		int lp = ac.loop(1,16);
+		int dec = ac.decrement(10,-5);
+		double inc = ac.increment(2.4,8.3,0.2);
 		
-		int y = 10;
-		int ymin = -5;
-		
-		double z = 2.4;
-		double zmax = 8.3;
-		double increment = 0.2; 
-		
-		System.out.println("x = " +x);
+	}
+	
+	public int loop(int ax, int xmax){	
+		int x;
+		for (x = ax ; x <= xmax; x++)
+		System.out.println("x = " + x);
 		System.out.print("\n");
-		
-		for (x = 1 ; x < xmax; x++) {}
-
-		while( y >= ymin) {
-		System.out.print("y = " +y );
-		y--;
-		System.out.print("\n");
+		return x;
+	}
+	
+	public int decrement(int ay, int ymin){
+		int y = ay;
+		while(ay >=ymin){
+			System.out.println("y =" + ay);
+			ay--;
+	}
+		return y;
+	}
+	
+	
+	public double increment(double az, double zz, double i){
+		double z;
+		for ( z = az; z < zz; z += i){
+		System.out.printf("\n z = " +"%.1f",z);
 		}
-		
-		{
-		System.out.print("\n");
-		}
-		
-		for ( z = 2.4; z < zmax; z += increment) {
-		System.out.printf("z = " +"%.1f",z);
-		System.out.print("\n");
-		}
-		}
+		return z;
+			
+	}
 }
 		
