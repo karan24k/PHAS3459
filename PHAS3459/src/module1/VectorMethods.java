@@ -32,7 +32,8 @@ public class VectorMethods {
 	public double angle(double ax, double ay, double az, double bx, double by, double bz) {
 		double z;
 		z = (Math.acos(dotprod(ax, ay, az, bx, by, bz)/(magnitude(ax, ay, az)*magnitude(bx, by, bz)))) * 180/Math.PI;
-		System.out.println(z);
+		final String DEGREE  = "\u00b0";
+		System.out.println("The angle between the two vectors is " + z + DEGREE );
 		return z;
 
 	}
