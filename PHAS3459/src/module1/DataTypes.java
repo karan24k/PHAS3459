@@ -25,9 +25,7 @@ public class DataTypes {
 		
 		char charVar = 'a' + 10; //16 bit unicode character
 		System.out.println("The character output is " + charVar + "\n");
-		/*The output gives 10 letters along the alphabet from a
-		 *  (GENIUS)
-		 */
+		//The output gives 10 letters along the alphabet from a
 		
 		char charVar2 = 'z' - 2;
 		System.out.println("The character output is " + charVar2 + "\n");
