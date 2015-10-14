@@ -54,7 +54,7 @@ public class ThreeVector {
 	}
 	
 	
-	//non-static methods which call the static methods, take one
+	//non-static methods which call the static methods, performs a function on an object (this) with another object as an argument (vector)
 	
 	public double scalarProduct(ThreeVector vector){
 		return ThreeVector.scalarProduct(this,vector);
