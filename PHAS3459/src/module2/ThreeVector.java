@@ -37,5 +37,20 @@ private double z;
 	public static double angle(ThreeVector a, ThreeVector b){
 		return Math.acos(scalarProduct(a,b)/(a.magnitude()*b.magnitude()));
 	}
-
+	
+	public double scalarProduct(ThreeVector vector){
+		return ThreeVector.scalarProduct(this,vector);
+	}
+	
+	public ThreeVector vectorProduct(ThreeVector vector){
+		return ThreeVector.vectorProduct(this, vector);
+	}
+	
+	public ThreeVector add(ThreeVector vector){
+		return ThreeVector.add(this, vector);
+	}
+	
+	public double angle(ThreeVector vector){
+		return ThreeVector.angle(this,vector);
+	}
 }
