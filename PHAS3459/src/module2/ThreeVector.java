@@ -2,27 +2,40 @@ package module2;
 
 public class ThreeVector {
 	
+	//store double variables for use in three vectors
 	private double x;
 	private double y;
 	private double z;
-		
+	
+	//retrieve the variables and place in new type - ThreeVector
 	public ThreeVector(double xx, double yy, double zz){
 		x = xx;
 		y = yy;
 		z = zz;
 	}
 	
+	// method to calculate magnitude of a vector
 	public double magnitude() {
 		return Math.sqrt(x*x + y*y + z*z); // returns magnitude of three vector 
 	}
 	
+	//method to calculate the normalised vector utilising the magnitude method
 	public ThreeVector unitVector (){
 		double mag = this.magnitude();
 		return new ThreeVector(x/mag, y/mag, z/mag);
 	}
+	
+	// method to print anything of type ThreeVector in a specific string
 	public String toString(){
 		return "The vector is ("+x+","+y+","+z+")";
 	}
+	
+	/*the methods below calulate the scalar product, vector product, sum and angle between two given vectors
+	 * they are written in both a static and non static form, the non-static methods are written such that they call the
+	 * static function
+	 */
+	
+	//static methods which take two ThreeVector objects as arguments
 	
 	public static double scalarProduct(ThreeVector a, ThreeVector b){
 		return (a.x*b.x) + (a.y*b.y) + (a.z*b.z);
@@ -35,10 +48,13 @@ public class ThreeVector {
 	public static ThreeVector add(ThreeVector a, ThreeVector b){
 		return new ThreeVector (a.x+b.x, a.y+b.y, a.z +b.z);
 	}
-	
+
 	public static double angle(ThreeVector a, ThreeVector b){
 		return Math.acos(scalarProduct(a,b)/(a.magnitude()*b.magnitude()));
 	}
+	
+	
+	//non-static methods which call the static methods, take one
 	
 	public double scalarProduct(ThreeVector vector){
 		return ThreeVector.scalarProduct(this,vector);
