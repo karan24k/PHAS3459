@@ -1,8 +1,10 @@
 package module2;
+
 public class ThreeVector {
-private double x;
-private double y;
-private double z;
+	
+	private double x;
+	private double y;
+	private double z;
 		
 	public ThreeVector(double xx, double yy, double zz){
 		x = xx;
@@ -19,7 +21,7 @@ private double z;
 		return new ThreeVector(x/mag, y/mag, z/mag);
 	}
 	public String toString(){
-		return "The normalised vector is ("+x+","+y+","+z+")";
+		return "The vector is ("+x+","+y+","+z+")";
 	}
 	
 	public static double scalarProduct(ThreeVector a, ThreeVector b){
