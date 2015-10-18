@@ -7,7 +7,7 @@ public class ThreeVector {
 	private double y;
 	private double z;
 	
-	//retrieve the variables and place in new type - ThreeVector
+	//place variables in new type - ThreeVector
 	public ThreeVector(double xx, double yy, double zz){
 		x = xx;
 		y = yy;
@@ -30,7 +30,7 @@ public class ThreeVector {
 		return "The vector is ("+x+","+y+","+z+")";
 	}
 	
-	/*the methods below calulate the scalar product, vector product, sum and angle between two given vectors
+	/*the methods below calculate the scalar product, vector product, sum and angle between two given vectors
 	 * they are written in both a static and non static form, the non-static methods are written such that they call the
 	 * static function
 	 */
