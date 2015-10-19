@@ -7,7 +7,7 @@ public class ThreeVector {
 	private double y;
 	private double z;
 	
-	//place variables in new type - ThreeVector
+	//constructor with threevector variables 
 	public ThreeVector(double xx, double yy, double zz){
 		x = xx;
 		y = yy;

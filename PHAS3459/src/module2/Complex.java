@@ -32,11 +32,8 @@ public class Complex {
 		return new Complex(Re,-Im);
 	}
 	
-	public Complex normalised() throws Exception{
+	public Complex normalised(){
 		double mod = this.modulus();
-		if (mod == 0)
-			// Since cannot divide by zero
-			throw new Exception("Cannot normalise number with modulus zero");
 		return new Complex(Re/mod, Im/mod);
 	}
 	
@@ -68,13 +65,11 @@ public class Complex {
 			double i = (a.Re * b.Im) + (b.Re * a.Im);
 			return new Complex(re, i);
 		}
-		static Complex divide(Complex a, Complex b) throws Exception {
+		static Complex divide(Complex a, Complex b){
 			// Numerator
 			Complex numerator = Complex.multiply(a, b.conjugate());
 			// Denominator, c*c* only returns a real number
 			double denominator = Complex.multiply(b, b.conjugate()).Real();
-			if (denominator == 0)
-				throw new Exception("Cannot divide by zero");
 			// Divide numerator by denominator
 			numerator.Re = numerator.Re / denominator;
 			numerator.Im = numerator.Im / denominator;
