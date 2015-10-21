@@ -1,23 +1,13 @@
 package module3;
 
 public class FallingParticle {
-	// Mass of Particle kg
-	private double m;
 	
-	// Drag Coefficient kg/m
-	private double d;
-	
-	// Time Elapsed s
-	private double t = 0;
-	
-	// Height of Particle
-	private double z;
-	
-	// Velocity of Particle
-	private double v;
-	
-	// acceleration due to gravity m/s^2
-	public static final double g = 9.81;
+	private double m; // Mass of Particle kg
+	private double d; // Drag Coefficient kg/m
+	private double t = 0; // Time Elapsed s
+	private double z; // Height of Particle
+	private double v; // Velocity of Particle
+	public static final double g = 9.81; // acceleration due to gravity m/s^2
 
 	// Constructor
 	public FallingParticle(double mass, double drag) throws Exception {
@@ -28,7 +18,10 @@ public class FallingParticle {
 	}
 	
 	// retrieve and manipulate private variables in the class
-	public void setZ(double Height){
+	public void setZ(double Height) throws Exception{
+		if (Height < 0){
+			throw new Exception("Impossible to have a negative height.");
+		}
 		z = Height;
 	}
 	public void setV(double Velocity) {
@@ -37,10 +30,7 @@ public class FallingParticle {
 	public void setT(double Time){
 		t = Time;
 	}
-	public double getZ() throws Exception{
-		if (z < 0){
-			throw new Exception("Impossible to have a negative height.");
-		}
+	public double getZ() {
 		return z;
 		
 	}

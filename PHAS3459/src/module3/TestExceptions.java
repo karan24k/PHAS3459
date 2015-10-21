@@ -38,19 +38,26 @@ public class TestExceptions {
 		catch (Exception e) {
 			System.out.println(e);
 		}
-		
+
 		try {
-			FallingParticle particle = new FallingParticle(-1, -2);
+			FallingParticle particle = new FallingParticle(-1, 2);
 			System.out.println(particle);
 		}
 		catch (Exception e){
 			System.out.println(e);
 		}
 		
+		try {
+			FallingParticle particle = new FallingParticle(1, -2);
+			System.out.println(particle);
+		}
+		catch (Exception e){
+			System.out.println(e);
+		}
+
 		try{
 			FallingParticle particle = new FallingParticle(1, 2);
 			particle.setZ(-2);
-			particle.getZ();
 		}
 		catch (Exception e){
 			System.out.println(e);
