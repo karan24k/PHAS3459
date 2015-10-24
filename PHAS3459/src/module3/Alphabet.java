@@ -24,8 +24,22 @@ public class Alphabet {
 
 				// Add to StringBuilder
 				str.append(ranChar);
-			}	
-	}
+				try {
+					// Sum ranChar's
+					sum = sum + Integer.parseInt(Character.toString(ranChar));
+				} catch (Exception e) {
+					// Log number of exceptions (letters)
+					letters++;
+				}
+			}
+			i++;
+		}
+		System.out.println("StringBuilder: " + str.toString());
+		System.out.println("Sum of all digits: " + sum);
+		System.out.println("Number of letters: " + letters);
+
+	}	
+
 
 	public static char randomCharacter() {
 
