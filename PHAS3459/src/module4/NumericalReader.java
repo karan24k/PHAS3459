@@ -13,6 +13,7 @@ public class NumericalReader {
 	private double average;
 	private PrintWriter pw;
 
+
 	public static void main(String[] args) throws IOException {
 
 		String input1 = "http://www.hep.ucl.ac.uk/undergrad/3459/data/module4/module4_data1.txt";
@@ -20,9 +21,7 @@ public class NumericalReader {
 		String line;
 		String saveDir = NumericalReader.getOutputDirectory();
 		String saveFile1 = (saveDir + File.separator + "numbers1.txt");
-		String saveFile2 = (saveDir + File.separator + "numbers2.txt");
-		
-		
+		String saveFile2 = (saveDir + File.separator + "numbers2.txt"); 
 
 		NumericalReader nr1 = new NumericalReader();
 		NumericalReader nr2 = new NumericalReader();
@@ -33,7 +32,7 @@ public class NumericalReader {
 			nr1.analysisStart(saveFile1);
 			while ((line = br1.readLine()) != null){
 				try {
-					nr1.analyseData(line);
+					nr1.analyseData(line, saveFile1);
 				}
 
 				catch (Exception e) { 
@@ -53,7 +52,7 @@ public class NumericalReader {
 			while ((line = br2.readLine()) != null)
 			{
 				try {
-					nr2.analyseData(line);
+					nr2.analyseData(line, saveFile2);
 				}
 				catch (Exception e) { 
 				} // If exception, ignore and move to next line
@@ -67,21 +66,11 @@ public class NumericalReader {
 	}
 
 	private static String getOutputDirectory() throws IOException{
-		String str = "";
-		System.out.println("Please specify output directory");
-		try{
-			Scanner input = new Scanner(System.in);
-			str = input.nextLine();
-			input.close();
-			if (str.isEmpty())
-				throw new Exception();
-		}
-		catch (Exception e){
-			System.out.println("No input detected");
-		}
-
-		return str;
-
+		System.out.println("Enter the location of a directory for writing output files:");
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String output = br.readLine();
+		return output;
 	}
 
 	public BufferedReader brFromURL(String urlName) throws IOException{
@@ -92,20 +81,22 @@ public class NumericalReader {
 		return b;
 	}
 
-	private void analysisStart(String dataFile) throws IOException{
+	private void analysisStart(String dFile) throws IOException{
 
 		minValue = Double.MAX_VALUE;
 		maxValue = Double.MIN_VALUE;
 		nValues = 0;
 		sumOfValues = 0;
-		
-		String dataFile1 = "Macintosh HD" + File.separator + "Users" + File.separator + "karankullar" + File.separator + "Documents" + File.separator + "numbers1.txt";
-		File outputfile = new File(dataFile1);
-		FileWriter fw = new FileWriter(outputfile);
+
+		String dataFile = "Macintosh HD" + File.separator + "Users" + File.separator + "karankullar" + File.separator + "Documents" + File.separator + "numbers.txt";
+		File outputFile = new File(dataFile);
+		outputFile.createNewFile();
+		FileWriter fw = new FileWriter(outputFile);
 		this.pw = new PrintWriter(fw);
 	}
 
-	public void analyseData(String line){
+
+	public void analyseData(String line, String saveFile) throws IOException{
 		line = line.trim();
 		if (!line.isEmpty() && Character.isDigit(line.charAt(0))) {
 			// Split string
@@ -115,19 +106,19 @@ public class NumericalReader {
 
 				// Print and write to file
 				System.out.println(num);
-				pw.println(num);
+				this.pw.println(num);
 
 				// Parse string
 				double x = Double.parseDouble(num);
 				// Increment and add to running total
-				nValues++;
-				sumOfValues += x;
+				this.nValues++;
+				this.sumOfValues += x;
 
 				// Compare to current value
-				if (x < minValue)
-					minValue = x;
-				if (x > maxValue)
-					maxValue = x;
+				if (x < this.minValue)
+					this.minValue = x;
+				if (x > this.maxValue)
+					this.maxValue = x;
 			}
 		}
 	}
@@ -142,6 +133,6 @@ public class NumericalReader {
 		System.out.println("Total Number of Values: " + nValues);
 
 		// Close PrintWriter
-		pw.close();
+		this.pw.close();
 	}
 }
