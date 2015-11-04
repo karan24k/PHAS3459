@@ -33,9 +33,11 @@ public class SquareMatrix {
 		return str.toString();
 	}
 
+	// method to create unitMatrix (diagonal elements =1, zero elsewhere)
 	public static SquareMatrix unitMatrix(int size){
 		double [][] ijvalue = new double [size][size];
 
+		//loop over each row and column, where the row and comlumn value are equal set element to 1, else 0
 		for (int x = 0; x<size; x++){
 			for (int y = 0; y<size; y++){
 				if (x == y){
@@ -69,10 +71,10 @@ public class SquareMatrix {
 	public static SquareMatrix add(SquareMatrix a, SquareMatrix b) throws Exception {
 
 		if (a.matrixSize != b.matrixSize)
-			// Throw exception for multiplying different size matrices
+			// Throw exception for adding different size matrices
 			throw new Exception("Matrix sizes must be the same");
 
-		// Size of matrix
+		// Size of matrix the same as the originals
 		int size = a.matrixSize;
 		// Create new matrix
 		double newMatrix[][] = new double[size][size];
@@ -93,10 +95,10 @@ public class SquareMatrix {
 	public static SquareMatrix subtract(SquareMatrix a, SquareMatrix b) throws Exception {
 
 		if (a.matrixSize != b.matrixSize)
-			// Throw exception for multiplying different size matrices
+			// Throw exception for subtracting different size matrices
 			throw new Exception("Matrix sizes must be the same");
 
-		// Size of matrix
+		// Size of matrix the same as the originals
 		int size = a.matrixSize;
 		// Create new matrix
 		double newMatrix[][] = new double[size][size];
@@ -119,7 +121,7 @@ public class SquareMatrix {
 			// Throw exception for multiplying different size matrices
 			throw new Exception("Matrix sizes must be the same");
 
-		// Size of matrix
+		// Size of matrix the same as the originals
 		int size = a.matrixSize;
 		// Create new matrix
 		double newMatrix[][] = new double[size][size];
@@ -136,11 +138,12 @@ public class SquareMatrix {
 				}
 			}
 		}
-
 		// Return new matrix
 		return new SquareMatrix(newMatrix);
 	}
-	// Non static helpers
+
+	// Non static methods
+	
 	SquareMatrix multiply(SquareMatrix b) throws Exception {
 		return SquareMatrix.multiply(this, b);
 	}
@@ -156,7 +159,8 @@ public class SquareMatrix {
 	SquareMatrix commutator(SquareMatrix b) throws Exception {
 		return SquareMatrix.commutator(this, b);
 	}
-	// commutator
+	
+	// commutator [a,b] = ab - ba
 	public static SquareMatrix commutator(SquareMatrix a, SquareMatrix b) throws Exception {
 		// a*b and b*a
 		SquareMatrix ab = a.multiply(b);
