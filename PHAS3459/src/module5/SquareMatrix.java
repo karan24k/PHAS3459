@@ -50,15 +50,7 @@ public class SquareMatrix {
 		return new SquareMatrix(ijvalue);
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.deepHashCode(matrixArray);
-		return result;
-	}
-
+	// find out if two matrices are equal
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -72,8 +64,58 @@ public class SquareMatrix {
 			return false;
 		return true;
 	}
-	
 
+	// add
+	public static SquareMatrix add(SquareMatrix a, SquareMatrix b) throws Exception {
+
+		if (a.matrixSize != b.matrixSize)
+			// Throw exception for multiplying different size matrices
+			throw new Exception("Matrix sizes must be the same");
+
+		// Size of matrix
+		int size = a.matrixSize;
+		// Create new matrix
+		double newMatrix[][] = new double[size][size];
+
+		// Loop over each row
+		for (int i = 0; i < size; i++) {
+			// Loop over each column in row
+			for (int j = 0; j < size; j++) {
+				newMatrix[i][j] = a.matrixArray[i][j] + b.matrixArray[i][j];
+			}
+		}
+
+		// Return new matrix
+		return new SquareMatrix(newMatrix);
+	}
+
+	// subtract
+	public static SquareMatrix subtract(SquareMatrix a, SquareMatrix b) throws Exception {
+
+		if (a.matrixSize != b.matrixSize)
+			// Throw exception for multiplying different size matrices
+			throw new Exception("Matrix sizes must be the same");
+
+		// Size of matrix
+		int size = a.matrixSize;
+		// Create new matrix
+		double newMatrix[][] = new double[size][size];
+
+		// Loop over each row
+		for (int i = 0; i < size; i++) {
+			// Loop over each column in row
+			for (int j = 0; j < size; j++) {
+				newMatrix[i][j] = a.matrixArray[i][j] - b.matrixArray[i][j];
+			}
+		}
+
+		// Return new matrix
+		return new SquareMatrix(newMatrix);
+	}
+
+
+
+}
 
 
 
