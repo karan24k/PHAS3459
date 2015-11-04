@@ -112,10 +112,60 @@ public class SquareMatrix {
 		// Return new matrix
 		return new SquareMatrix(newMatrix);
 	}
+	// multiply
+	public static SquareMatrix multiply(SquareMatrix a, SquareMatrix b) throws Exception {
+
+		if (a.matrixSize != b.matrixSize)
+			// Throw exception for multiplying different size matrices
+			throw new Exception("Matrix sizes must be the same");
+
+		// Size of matrix
+		int size = a.matrixSize;
+		// Create new matrix
+		double newMatrix[][] = new double[size][size];
+
+		// Loop over each row
+		for (int i = 0; i < size; i++) {
+			// Loop over each column in row
+			for (int j = 0; j < size; j++) {
+				// Generic iterator for length of matrix
+				for (int k = 0; k < size; k++) {
+					// Value is the respective row values of a * column values of b
+					// [i][k] is iterating along a row and [k][j] is down a column
+					newMatrix[i][j] += a.matrixArray[i][k] * b.matrixArray[k][j];
+				}
+			}
+		}
+
+		// Return new matrix
+		return new SquareMatrix(newMatrix);
+	}
+	// Non static helpers
+	SquareMatrix multiply(SquareMatrix b) throws Exception {
+		return SquareMatrix.multiply(this, b);
+	}
+
+	SquareMatrix add(SquareMatrix b) throws Exception {
+		return SquareMatrix.add(this, b);
+	}
+
+	SquareMatrix subtract(SquareMatrix b) throws Exception {
+		return SquareMatrix.subtract(this, b);
+	}
+
+	SquareMatrix commutator(SquareMatrix b) throws Exception {
+		return SquareMatrix.commutator(this, b);
+	}
+	// commutator
+	public static SquareMatrix commutator(SquareMatrix a, SquareMatrix b) throws Exception {
+		// a*b and b*a
+		SquareMatrix ab = a.multiply(b);
+		SquareMatrix ba = b.multiply(a);
+		// Return new matrix of ab-ba
+		return new SquareMatrix(SquareMatrix.subtract(ab,ba).matrixArray);
 
 
-
+	}
 }
-
 
 
