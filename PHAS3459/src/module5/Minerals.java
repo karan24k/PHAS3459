@@ -68,7 +68,7 @@ public class Minerals {
 		return b;
 	}
 
-	// HashMap of samples data set 
+	//  HashMap of samples data set 
 	public static HashMap<Integer, Double> massMap(String samples) throws IOException{
 		HashMap<Integer, Double> massMap = new HashMap<Integer, Double>();
 		BufferedReader br = brFromURL(samples);
