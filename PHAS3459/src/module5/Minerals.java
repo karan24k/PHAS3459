@@ -73,7 +73,7 @@ public class Minerals {
 		HashMap<Integer, Double> massMap = new HashMap<Integer, Double>();
 		BufferedReader br = brFromURL(samples);
 		String line;
-		// Read each line and extract data
+		// Read each line and extract data 
 		while ((line = br.readLine()) != null) {
 			//split string up depending on spaces between text
 			String[] values = line.split("\\s+");
