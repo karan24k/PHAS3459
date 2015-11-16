@@ -28,6 +28,6 @@ public class DataPoint {
 	
 	// toString for printing each value with a tab in-between
 	public String toString(){
-		return x + "\t" + y + "\t" + ey;
+		return "x = "+x+", y = "+y+" +- "+ey;
 	}
 }
