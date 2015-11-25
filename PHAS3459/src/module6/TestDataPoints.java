@@ -1,13 +1,8 @@
 package module6;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class TestDataPoints {
 
@@ -19,7 +14,7 @@ public class TestDataPoints {
 			Iterator<DataPoint> dpi = datapoints.iterator();
 			while (dpi.hasNext()) {
 				Object dataPoint = dpi.next();
-				// print datapoint
+				// print datapoint using toStrings defined in DataPoint and LabelledDataPoint
 				System.out.println(dataPoint);
 			}
 		} catch (Exception e) {
@@ -31,6 +26,7 @@ public class TestDataPoints {
 	public static Collection<DataPoint> dataFromURL(String url) throws IOException, IllegalArgumentException {
 		Collection<DataPoint> dataSet = new ArrayList<DataPoint>();
 
+		//code to read data from url file
 		URL u = new URL(url);
 		InputStream is = u.openStream();
 		InputStreamReader isr = new InputStreamReader(is);
@@ -43,6 +39,7 @@ public class TestDataPoints {
 			//split string up depending on spaces between text
 			String[] values = line.split("\\s+");
 
+			//no label arraylist
 			if(values.length == 3){
 				double [] numbers = new double [3];
 
@@ -54,6 +51,7 @@ public class TestDataPoints {
 				dataSet.add(new DataPoint(numbers[0],numbers[1],numbers[2]));
 			}
 
+			//labelled arraylist
 			else if(values.length == 4){
 				double [] numbers = new double [3];
 
