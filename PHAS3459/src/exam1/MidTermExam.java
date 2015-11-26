@@ -9,21 +9,7 @@ import java.util.*;
 
 public class MidTermExam {
 
-	public static void main(String[] args) {
-		try {
-			String earthquakes = "http://www.hep.ucl.ac.uk/undergrad/3459/exam-data/2015-16/earthquakesCA1989.txt";
-
-			HashMap<Integer, List<Double>> earthquakeMap =  earthquakeMap(earthquakes);
-
-			System.out.println("Number of Earthquakes: " + earthquakeMap.size());
-
-		}
-		catch (IOException ioe) {
-			System.out.println(ioe);
-		}
-
-
-	}
+	
 
 	// Method to read URL and return buffered reader object
 	public static BufferedReader brFromURL(String urlName) throws IOException{
@@ -37,14 +23,17 @@ public class MidTermExam {
 	//  HashMap of earthquake dataset
 	public static HashMap<Integer, List<Double>> earthquakeMap(String earthquakes) throws IOException{
 		HashMap<Integer, List<Double>> earthquakeMap = new HashMap<Integer, List<Double>>();
-
+		
 		BufferedReader br = brFromURL(earthquakes); // read from url
 		Scanner s = new Scanner(br);
-		// while the next value is a double, split the string in to parts, sepearted by whitespace
+		br.readLine();
+		br.readLine();
+		double maxmagnitude = 0.0;
+	
+		// while the next value is a double, split the string in to parts, separated by whitespace
 		while (s.hasNextDouble()) {
+
 			String[] parts = s.nextLine().split("\\s+");
-
-
 			//parse each part of the string array as a double 
 			double year = Double.parseDouble(parts[0]);
 			double month = Double.parseDouble(parts[1]);
@@ -83,14 +72,32 @@ public class MidTermExam {
 			earthquakeMap.put(id, data);
 			
 			//find details of largest magnitude
-			double maxmagnitude = Double.MIN_VALUE;
 			if(mag>maxmagnitude){
 				maxmagnitude = mag;
-				System.out.println(maxmagnitude);
+				
 			}
-			s.close();
+			
 		}
+		System.out.println(maxmagnitude);
+		s.close();
+
 		return earthquakeMap;
+	}
+	
+	public static void main(String[] args) {
+		try {
+			String earthquakes = "http://www.hep.ucl.ac.uk/undergrad/3459/exam-data/2015-16/earthquakesCA1989.txt";
+
+			HashMap<Integer, List<Double>> earthquakeMap =  earthquakeMap(earthquakes);
+
+			System.out.println("Number of Earthquakes: " + earthquakeMap.size());
+
+		}
+		catch (IOException ioe) {
+			System.out.println(ioe);
+		}
+
+
 	}
 
 }
