@@ -14,6 +14,7 @@ public class ThreadsMain {
 		try {
 			countdown.join();	
 		} 
+		
 		// Catch any exceptions due to interruption
 		catch (InterruptedException e) {
 			e.printStackTrace();

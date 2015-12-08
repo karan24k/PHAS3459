@@ -2,7 +2,7 @@ package module8;
 
 import java.util.ArrayList;
 
-public class PrimeNumberTask implements Runnable {
+public class PrimeNumberTask implements Runnable { // runnable doesn't return a result
 	// List to store primes
 	private ArrayList<Integer> primes = new ArrayList<Integer>();
 

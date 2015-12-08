@@ -1,6 +1,6 @@
 package module8;
 
-public class CountdownTask implements Runnable {
+public class CountdownTask implements Runnable { // runnable doesn't return a result
 	private int count;
 	public CountdownTask(int count){
 		this.count = count;
