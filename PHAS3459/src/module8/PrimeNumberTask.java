@@ -24,7 +24,7 @@ public class PrimeNumberTask implements Runnable { // runnable doesn't return a 
 			n++;
 			// Check if this thread has been interrupted
 			if (Thread.currentThread().isInterrupted()) {
-				// print statistics about primes found and return thread
+				// print information about primes found and return thread
 				System.out.println("Largest number checked: "+n);
 				System.out.println("Largest prime found: "+primes.get(primes.size()-1));
 				System.out.println("Number of primes found: "+primes.size());
@@ -40,7 +40,7 @@ public class PrimeNumberTask implements Runnable { // runnable doesn't return a 
 		for (int i=2; i<n; i++) {
 			// if n is prime, no number between 2 and n-1 should divide n evenly
 			// if any number in this range divides n evenly, n is not prime
-			if (n%i == 0) {
+			if (n%i == 0) { //check if remainder of division is zero, if it is then not a prime
 				return false;
 			} 
 		} 
